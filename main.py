@@ -61,7 +61,7 @@ class VK:
             photos_info_list.append(photos_info_dict)
         with open('photos_info.json', 'w') as file:
             json.dump(photos_info_list, file, indent=4)
-            print('Succes')
+        return 'Succes'
 
 
 class Yandex:
