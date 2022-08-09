@@ -4,11 +4,15 @@ import json
 from tqdm import tqdm
 
 
-with open('config.txt') as config_file: # В файле построчно записаны токены для ВК и Я.Диска
+with open('config.txt') as config_file: # В файле записан токен для ВК
     vk_token = config_file.readline().strip()
-    ya_token = config_file.readline().strip()
 
-def get_id():
+def ya_token():
+    '''Получение токена Я.Диска, на который будут загружены фото.'''
+    ya_token = input('Введите токен: ')
+    return ya_token
+
+def user_id():
     '''Получение id пользователя, чьи фотографии надо скопировать на Я.Диск.'''
     user_id = input('Введите id пользователя: ')
     return user_id
@@ -95,7 +99,8 @@ class Yandex:
 
 
 if __name__ == '__main__':
-    user_id = get_id()
+    user_id = user_id()
+    ya_token = ya_token()
     vk = VK(vk_token, user_id)
     ya = Yandex(ya_token)
     ya.upload_photos()
